@@ -21,11 +21,18 @@ BuildRequires:	cmake(KF5CalendarCore)
 BuildRequires:	cmake(Qt5Core)
 BuildRequires:	cmake(Qt5Gui)
 BuildRequires:	cmake(Qt5Widgets)
+BuildRequires:	cmake(Qt5Concurrent)
+BuildRequires:	cmake(Qt5WebEngine)
+BuildRequires:	cmake(Qt5WebEngineWidgets)
+BuildRequires:	cmake(Qt5Qml)
+BuildRequires:	cmake(Qt5Quick)
+BuildRequires:	cmake(Qt5Test)
 BuildRequires:	cmake(Sink)
 BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	pkgconfig(libgit2)
 BuildRequires:	pkgconfig(readline)
 BuildRequires:	lmdb-devel
+BuildRequires:	gpgme-devel
 
 %description
 The Kube email client
