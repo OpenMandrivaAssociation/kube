@@ -1,7 +1,7 @@
 #define stable ([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 # sink doesn't follow KDE's usual versioning scheme yet, it's always unstable
 %define stable unstable
-%define snapshot 20190917
+%define snapshot 20200905
 
 Name:           kube
 Version:        0.8.1
@@ -12,7 +12,8 @@ License:        GPL
 URL:            https://www.kube-project.com/
 %if 0%{snapshot}
 Release:	0.%{snapshot}.1
-Source0:	%{name}-%{version}-%{snapshot}.tar.xz
+# https://invent.kde.org/pim/kube
+Source0:	https://invent.kde.org/pim/kube/-/archive/master/kube-master.tar.bz2
 %else
 Release:        1
 Source0:        http://download.kde.org/%{stable}/kube/%{version}/src/%{name}-%{version}.tar.xz
@@ -51,7 +52,7 @@ The Kube email client
 
 %prep
 %if 0%{snapshot}
-%autosetup -p1 -n %{name}-%{version}-%{snapshot}
+%autosetup -p1 -n %{name}-master
 %else
 %autosetup -p1
 %endif
