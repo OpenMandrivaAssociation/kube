@@ -1,10 +1,10 @@
 #define stable ([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 # sink doesn't follow KDE's usual versioning scheme yet, it's always unstable
 %define stable unstable
-%define snapshot 20200905
+%define snapshot %{nil}
 
 Name:           kube
-Version:        0.8.1
+Version:        0.9.0
 Summary:        The Kube email client
 
 Group:          Applications/Desktop
@@ -16,10 +16,11 @@ Release:	0.%{snapshot}.1
 Source0:	https://invent.kde.org/pim/kube/-/archive/master/kube-master.tar.bz2
 %else
 Release:        1
-Source0:        http://download.kde.org/%{stable}/kube/%{version}/src/%{name}-%{version}.tar.xz
+#Source0:        http://download.kde.org/%{stable}/kube/%{version}/src/%{name}-%{version}.tar.xz
+Source0:        https://invent.kde.org/pim/kube/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
 %endif
 
-Patch0:		kube-0.8.1-compile.patch
+#Patch0:		kube-0.8.1-compile.patch
 
 BuildRequires:  cmake ninja
 BuildRequires:  cmake(ECM)
@@ -27,6 +28,7 @@ BuildRequires:	cmake(KF5CoreAddons)
 BuildRequires:	cmake(KF5Contacts)
 BuildRequires:	cmake(KF5Mime)
 BuildRequires:	cmake(KF5CalendarCore)
+BuildRequires:  cmake(KF5Sonnet)
 BuildRequires:	cmake(KAsync)
 BuildRequires:	cmake(KPimKDAV2)
 BuildRequires:	cmake(KIMAP2)
@@ -51,11 +53,11 @@ BuildRequires:	gpgme-devel
 The Kube email client
 
 %prep
-%if 0%{snapshot}
-%autosetup -p1 -n %{name}-master
-%else
-%autosetup -p1
-%endif
+#if 0%{snapshot}
+#autosetup -p1 -n %{name}-master
+#else
+%autosetup -p1 -n %{name}-v%{version}
+#endif
 %cmake_kde5
 
 %build
