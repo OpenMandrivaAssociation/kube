@@ -15,7 +15,7 @@ Release:	0.%{snapshot}.1
 # https://invent.kde.org/pim/kube
 Source0:	https://invent.kde.org/pim/kube/-/archive/master/kube-master.tar.bz2
 %else
-Release:        1
+Release:        2
 #Source0:        http://download.kde.org/%{stable}/kube/%{version}/src/%{name}-%{version}.tar.xz
 Source0:        https://invent.kde.org/pim/kube/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
 %endif
@@ -53,12 +53,17 @@ BuildRequires:	gpgme-devel
 The Kube email client
 
 %prep
-#if 0%{snapshot}
-#autosetup -p1 -n %{name}-master
-#else
+%if 0%{snapshot}
+%autosetup -p1 -n %{name}-master
+%else
 %autosetup -p1 -n %{name}-v%{version}
-#endif
-%cmake_kde5
+%endif
+# The default value for KUBE_DESKTOPFILE_CATEGORIES is
+# KUBE_DESKTOPFILE_CATEGORIES:STRING=Qt;KDE;Office;Network;Email;
+# We remove Office to avoid a nasty duplicate icon in Plasma Mobile
+# until this is fixed properly.
+%cmake_kde5 \
+	-DKUBE_DESKTOPFILE_CATEGORIES:STRING="Qt;KDE;Network;Email;"
 
 %build
 %ninja_build -C build
