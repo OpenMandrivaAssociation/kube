@@ -15,7 +15,7 @@ Release:	0.%{snapshot}.1
 # https://invent.kde.org/pim/kube
 Source0:	https://invent.kde.org/pim/kube/-/archive/master/kube-master.tar.bz2
 %else
-Release:        2
+Release:        3
 #Source0:        http://download.kde.org/%{stable}/kube/%{version}/src/%{name}-%{version}.tar.xz
 Source0:        https://invent.kde.org/pim/kube/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
 %endif
