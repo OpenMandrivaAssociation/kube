@@ -49,6 +49,7 @@ BuildRequires:	pkgconfig(libgit2)
 BuildRequires:	pkgconfig(readline)
 BuildRequires:	lmdb-devel
 BuildRequires:	gpgme-devel
+BuildRequires:	%mklibname -d binutils
 
 %description
 The Kube email client
