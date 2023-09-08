@@ -47,6 +47,7 @@ BuildRequires:	cmake(Sink)
 BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	pkgconfig(libgit2)
 BuildRequires:	pkgconfig(readline)
+BuildRequires:	pkgconfig(libunwind)
 BuildRequires:	lmdb-devel
 BuildRequires:	gpgme-devel
 BuildRequires:	%mklibname -d binutils
